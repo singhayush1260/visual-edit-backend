@@ -5,6 +5,8 @@ const path = require('path');
 const connectDB=require('./data/connect_db');
 const authRoutes=require('./routes/authRoutes');
 const fileRoutes=require('./routes/fileRoutes');
+const editRoutes=require('./routes/editRoutes');
+
 const upload=require('./multer/multer');
 
 const PORT = process.env.PORT || 3000;
@@ -18,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api/auth',authRoutes);
 app.use('/api/file',upload.single('image'),fileRoutes);
+app.use('/api/edit',editRoutes);
 
 connectDB(MONGO_URI);
 
