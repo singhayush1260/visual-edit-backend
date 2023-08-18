@@ -22,6 +22,15 @@ app.use('/api/auth',authRoutes);
 app.use('/api/file',upload.single('image'),fileRoutes);
 app.use('/api/edit',editRoutes);
 
+app.use('/api/test',(req,res)=>{
+    try{
+        console.log('inside test route')
+       console.log(req.body);
+    }catch(e){
+        console.log('error',e)
+    }
+});
+
 connectDB(MONGO_URI);
 
 app.listen(PORT,()=>{
